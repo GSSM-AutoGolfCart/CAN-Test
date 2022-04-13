@@ -1,8 +1,8 @@
 import os
-import util
+import src.util as util
 
 def run():
-    pass
+    main_menu()
 
 def clear():
     # Clear Screen

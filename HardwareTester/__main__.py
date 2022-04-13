@@ -24,11 +24,6 @@ if __name__ == "__main__":
     # Banner and Info Block
     print(util.to_color(util.title, "cyan"))
     print(util.info_block)
-
-    # Check args
-    if len(sys.argv) == 1:
-        print(util.to_color("Please Specify the IP Address of the Drive Computer", "red"))
-        sys.exit(1)
     
     # Run Program
     tester.run()
