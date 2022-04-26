@@ -4,8 +4,7 @@ import sys
 # Main
 #
 # Part of the GSSM Autonomous Golf Cart
-# Written by:
-#   Joseph Telaak, class of 2022
+# Written by: Joseph Telaak, class of 2022
 
 if __name__ == "__main__":
     # Version Check

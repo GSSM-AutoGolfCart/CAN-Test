@@ -1,6 +1,6 @@
 import pyfiglet
 
-# Drive Computer Remote Telop Client
+# Drive Computer
 # Utils
 #
 # Part of the GSSM Autonomous Golf Cart
