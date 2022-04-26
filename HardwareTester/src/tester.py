@@ -1,4 +1,5 @@
 import os
+import sys
 
 import src.util as util
 import src.can.can_messages as msg
@@ -11,7 +12,7 @@ from src.can_adapter import CAN_Adapter
 # Written by: Joseph Telaak, class of 2022
 
 # CAN Adapter
-can = CAN_Adapter(serial_port="", baud=11520)
+can = CAN_Adapter(serial_port=str(sys.argv[1]), baud=11520)
 
 # Run
 def run():
