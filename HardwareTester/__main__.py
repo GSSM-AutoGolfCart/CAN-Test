@@ -17,7 +17,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Imports
-    import src.tester as tester
     import src.util as util
 
     # Banner and Info Block
@@ -27,7 +26,19 @@ if __name__ == "__main__":
     # Check args
     if len(sys.argv) == 1:
         print(util.to_color("Please Specify the Serial Port of the CAN Adapter", "red"))
+        print()
+
+        import src.can_adapter as adpt
+        print("Available Ports: ")
+        adpt.printPorts()
+        print()
+
         sys.exit(1)
-    
+
+    # Imports
+    from src.tester import Tester
+    from src.can_adapter import CAN_Adapter
+
     # Run Program
+    tester = Tester(adapter=CAN_Adapter(serial_port=str(sys.argv[1]), baud=115200))
     tester.run()

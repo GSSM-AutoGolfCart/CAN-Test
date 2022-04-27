@@ -1,4 +1,5 @@
 import serial
+import sys
 
 # Drive Computer Core Library
 #
@@ -15,13 +16,15 @@ class CAN_Adapter:
     # serial_port: Serial port where the Arduino CAN Adapter is located
     # baud: Arduino serial baud rate
 
-    def __init__(self, serial_port = '/dev/ttyUSB0', baud = 11520):
-        try:
-            self.arduino = serial.Serial(port = serial_port, baudrate = baud, timeout = .1)
+    def __init__(self, serial_port = str(sys.argv[1]), baud = 115200):
+        # try:
+        #     self.arduino = serial.Serial(serial_port, baud, timeout=.1)
 
-        except:
-            print("FATAL: Cannot connect to the drive computer's CAN adapter")
-            quit()
+        # except:
+        #     print(f"FATAL: Cannot connect to the drive computer's CAN adapter ({serial_port}, {baud} baud)")
+        #     quit()
+
+        self.arduino = serial.Serial(serial_port, baud, timeout=.1)
             
 
     # Return a reference to the device
@@ -56,8 +59,17 @@ class CAN_Adapter:
 
         # Send message as String
         output = f"({id}) {formatted_data}"
-        self.arduino.write(f"CMD-Send: {output}")
+        self.write(output)
 
     # Send CAN message
     def write(self, message):
-        self.arduino.write(f"CMD-Send: {message}")
+        self.arduino.write((f"CMD-Send: {message}").encode())
+
+
+# List all available ports
+def printPorts():
+    import serial.tools.list_ports
+    ports = serial.tools.list_ports.comports()
+
+    for port, desc, hwid in sorted(ports):
+        print("{}: {} [{}]".format(port, desc, hwid))

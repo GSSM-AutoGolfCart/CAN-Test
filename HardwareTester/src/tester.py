@@ -11,221 +11,225 @@ from src.can_adapter import CAN_Adapter
 # Part of the GSSM Autonomous Golf Cart
 # Written by: Joseph Telaak, class of 2022
 
-# CAN Adapter
-can = CAN_Adapter(serial_port=str(sys.argv[1]), baud=11520)
 
-# Run
-def run():
-    main_menu()
+class Tester:
 
-# Clear screen
-def clear():
-    # Clear Screen
-    os.system('cls' if os.name == 'nt' else 'clear')
-    
-    # Banner and Info Block
-    print(util.to_color(util.title, "cyan"))
-    print(util.info_block)
+    # Constructor
+    def __init__(self, adapter = CAN_Adapter()) -> None:
+        self.can = adapter
 
-# Main menu
-def main_menu():
-    clear()
-    print("Main Menu: ")
+    # Run
+    def run(self):
+        self.main_menu()
 
-    print("""
-        1) Direction
-        2) Steering
-        3) Brakes
-        4) Acceleration
-        5) Accessories
-        6) Misc
-        7) Run in Manual Mode
-    
-    """)
+    # Clear screen
+    def clear(self):
+        # Clear Screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        # Banner and Info Block
+        print(util.to_color(util.title, "cyan"))
+        print(util.info_block)
 
-    option = int(input("Enter Choice: "))
+    # Main menu
+    def main_menu(self):
+        self.clear()
+        print("Main Menu: ")
 
-    if option == 1:
-        direction()
-    elif option == 2:
-        steering()
-    elif option == 3:
-        brakes()
-    elif option == 4:
-        acclerator()
-    elif option == 5:
-        accessories()
-    elif option == 6:
-        misc()
-    elif option == 7:
-        manual()
-    else:
-        main_menu()
+        print("""
+            1) Direction
+            2) Steering
+            3) Brakes
+            4) Acceleration
+            5) Accessories
+            6) Misc
+            7) Run in Manual Mode
+        
+        """)
 
-# Steering menu
-def steering():
-    clear()
-    print("Steering Menu: ")
+        option = int(input("Enter Choice: "))
 
-    print("""
-        1) Turn Right
-        2) Turn Left
-        3) Stop Turn
-        4) Back
-    
-    """)
+        if option == 1:
+            self.direction()
+        elif option == 2:
+            self.steering()
+        elif option == 3:
+            self.brakes()
+        elif option == 4:
+            self.acclerator()
+        elif option == 5:
+            self.accessories()
+        elif option == 6:
+            self.misc()
+        elif option == 7:
+            self.manual()
+        
+        self.main_menu()
 
-    option = int(input("Enter Choice: "))
+    # Steering menu
+    def steering(self):
+        self.clear()
+        print("Steering Menu: ")
 
-    if option == 1:
-        can.write(msg.turn_right)
-    elif option == 2:
-        can.write(msg.turn_left)
-    elif option == 3:
-        can.write(msg.stop_turn)
-    else:
-        main_menu()
+        print("""
+            1) Turn Right
+            2) Turn Left
+            3) Stop Turn
+            4) Back
+        
+        """)
 
-# Direction Menu
-def direction():
-    clear()
-    print("Direction Menu: ")
+        option = int(input("Enter Choice: "))
 
-    print("""
-        1) Forward
-        2) Reverse
-        3) Enable
-        4) Disable
-        5) Back
-    
-    """)
+        if option == 1:
+            self.can.write(msg.turn_right)
+        elif option == 2:
+            self.can.write(msg.turn_left)
+        elif option == 3:
+            self.can.write(msg.stop_turn)
+        
+        self.main_menu()
 
-    option = int(input("Enter Choice: "))
+    # Direction Menu
+    def direction(self):
+        self.clear()
+        print("Direction Menu: ")
 
-    if option == 1:
-        can.write(msg.forward)
-    elif option == 2:
-        can.write(msg.reverse)
-    elif option == 3:
-        can.write(msg.enable)
-    elif option == 4:
-        can.write(msg.disable)
-    else:
-        main_menu()
+        print("""
+            1) Forward
+            2) Reverse
+            3) Enable
+            4) Disable
+            5) Back
+        
+        """)
 
-# Brakes menu
-def brakes():
-    clear()
-    print("Brakes Menu: ")
+        option = int(input("Enter Choice: "))
 
-    print("""
-        1) Pull
-        2) Release
-        3) Disable
-        4) Back
-    
-    """)
+        if option == 1:
+            self.can.write(msg.forward)
+        elif option == 2:
+            self.can.write(msg.reverse)
+        elif option == 3:
+            self.can.write(msg.enable)
+        elif option == 4:
+            self.can.write(msg.disable)
+        
+        self.main_menu()
 
-    option = int(input("Enter Choice: "))
+    # Brakes menu
+    def brakes(self):
+        self.clear()
+        print("Brakes Menu: ")
 
-    if option == 1:
-        can.write(msg.pull_brakes)
-    elif option == 2:
-        can.write(msg.release_brakes)
-    elif option == 3:
-        can.write(msg.disable_brakes)
-    else:
-        main_menu()
+        print("""
+            1) Pull
+            2) Release
+            3) Disable
+            4) Back
+        
+        """)
 
-# Accelerator menu
-def acclerator():
-    clear()
-    print("Accelerator Menu: ")
+        option = int(input("Enter Choice: "))
 
-    print("""
-        1) Increment
-        2) Decrement
-        3) Stop
-        4) Back
-    
-    """)
+        if option == 1:
+            self.can.write(msg.pull_brakes)
+        elif option == 2:
+            self.can.write(msg.release_brakes)
+        elif option == 3:
+            self.can.write(msg.disable_brakes)
+        
+        self.main_menu()
 
-    option = int(input("Enter Choice: "))
+    # Accelerator menu
+    def acclerator(self):
+        self.clear()
+        print("Accelerator Menu: ")
 
-    if option == 1:
-        can.write(msg.accelerate)
-    elif option == 2:
-        can.write(msg.deccelerate)
-    elif option == 3:
-        can.write(msg.stop_accel)
-    else:
-        main_menu()
+        print("""
+            1) Increment
+            2) Decrement
+            3) Stop
+            4) Back
+        
+        """)
 
-# Accessory menu
-def accessories():
-    clear()
-    print("Accessory Menu: ")
+        option = int(input("Enter Choice: "))
 
-    print("""
-        1) Head Lights On
-        2) Head Lights Off
-        3) Tail Lights On
-        4) Tail Lights Off
-        5) Left Signal On
-        6) Left Signal Off
-        7) Right Signal On
-        8) Right Signal Off
-        9) Rear Buzzer On
-        10) Rear Buzzer Off
-        11) Honk
-        12) Back
-    
-    """)
+        if option == 1:
+            self.can.write(msg.accelerate)
+        elif option == 2:
+            self.can.write(msg.deccelerate)
+        elif option == 3:
+            self.can.write(msg.stop_accel)
+        
+        self.main_menu()
 
-    option = int(input("Enter Choice: "))
+    # Accessory menu
+    def accessories(self):
+        self.clear()
+        print("Accessory Menu: ")
 
-    if option == 1:
-        can.write(msg.head_on)
-    elif option == 2:
-        can.write(msg.head_off)
-    elif option == 3:
-        can.write(msg.tail_on)
-    elif option == 4:
-        can.write(msg.tail_off)
-    elif option == 5:
-        can.write(msg.left_signal_on)
-    elif option == 6:
-        can.write(msg.left_signal_off)
-    elif option == 7:
-        can.write(msg.right_signal_on)
-    elif option == 8:
-        can.write(msg.right_signal_off)
-    elif option == 9:
-        can.write(msg.rear_buzz_on)
-    elif option == 10:
-        can.write(msg.rear_buzz_off)
-    elif option == 11:
-        can.write(msg.honk)
-    else:
-        main_menu()
+        print("""
+            1) Head Lights On
+            2) Head Lights Off
+            3) Tail Lights On
+            4) Tail Lights Off
+            5) Left Signal On
+            6) Left Signal Off
+            7) Right Signal On
+            8) Right Signal Off
+            9) Rear Buzzer On
+            10) Rear Buzzer Off
+            11) Honk
+            12) Back
+        
+        """)
 
-# Misc menu
-def misc():
-    clear()
-    print("Misc Menu: ")
+        option = int(input("Enter Choice: "))
 
-    print("""
-        1) Back
-    
-    """)
+        if option == 1:
+            self.can.write(msg.head_on)
+        elif option == 2:
+            self.can.write(msg.head_off)
+        elif option == 3:
+            self.can.write(msg.tail_on)
+        elif option == 4:
+            self.can.write(msg.tail_off)
+        elif option == 5:
+            self.can.write(msg.left_signal_on)
+        elif option == 6:
+            self.can.write(msg.left_signal_off)
+        elif option == 7:
+            self.can.write(msg.right_signal_on)
+        elif option == 8:
+            self.can.write(msg.right_signal_off)
+        elif option == 9:
+            self.can.write(msg.rear_buzz_on)
+        elif option == 10:
+            self.can.write(msg.rear_buzz_off)
+        elif option == 11:
+            self.can.write(msg.honk)
+        
+        self.main_menu()
 
-    option = int(input("Enter Choice: "))
+    # Misc menu
+    def misc(self):
+        self.clear()
+        print("Misc Menu: ")
 
-    if option == 1:
+        print("""
+            1) Back
+        
+        """)
+
+        option = int(input("Enter Choice: "))
+
+        if option == 1:
+            pass
+        
+        self.main_menu()
+
+    # Manual mode operation
+    def manual():
         pass
-    else:
-        main_menu()
-
-# Manual mode operation
-def manual():
-    pass

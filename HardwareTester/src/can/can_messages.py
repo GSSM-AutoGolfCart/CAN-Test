@@ -1,5 +1,5 @@
-import can_util as util
-import cart_module as m
+import src.can.can_util as util
+import src.can.cart_module as m
 
 # Hardware Module Tester
 # Messages
@@ -20,7 +20,7 @@ disable_brakes = "(4081) 10 2 10 1 0 0 0 0"
 # Drive Module: Direction Control
 disable = "(4083) 10 10 14 1 0 0 0 0"
 enable = "(4083) 10 10 14 1 0 0 0 0"
-forward = "(4083) 10 13 1 0 0 0 0 0)"
+forward = "(4083) 10 13 1 0 0 0 0 0"
 reverse = "(4083) 10 13 2 0 0 0 0 0"
 
 # Drive Module: Speed Control
