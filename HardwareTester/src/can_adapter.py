@@ -40,7 +40,7 @@ class CAN_Adapter:
     # message: Message to send
 
     def send_string_to_adapter(self, message):
-        self.arduino.write(message)
+        self.arduino.write(message.encode())
 
     # Send CAN message
     #
@@ -63,7 +63,7 @@ class CAN_Adapter:
 
     # Send CAN message
     def write(self, message):
-        self.arduino.write((f"CMD-Send: {message}").encode())
+        self.arduino.write((f">{message}").encode())
 
 
 # List all available ports
