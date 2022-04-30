@@ -9,11 +9,12 @@ import sys
 if __name__ == "__main__":
     # Version Check
     python_major = sys.version_info[0]
+    python_minor = sys.version_info[1]
     python_version = str(sys.version_info[0])+"."+str(sys.version_info[1])+"."+str(sys.version_info[2])
 
     # Check for Python 3
-    if python_major != 3:
-        print(f"The GSSM Auto Golf Cart CAN Tester Requires Python 3. You are using {python_version}")
+    if python_major != 3 and python_minor != 7:
+        print(f"The GSSM Auto Golf Cart CAN Tester Requires Python 3.7. You are using {python_version}")
         sys.exit(1)
 
     # Imports
