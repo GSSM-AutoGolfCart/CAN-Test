@@ -43,7 +43,8 @@ class Tester:
             4) Acceleration
             5) Accessories
             6) Misc
-            7) Run in Manual Mode
+            7) Run in Manual Mode (In-Progess)
+            8) Exit
         
         """)
 
@@ -63,6 +64,8 @@ class Tester:
             self.misc()
         elif option == 7:
             self.manual()
+        elif option == 8:
+            exit(0)
         
         self.main_menu()
 
