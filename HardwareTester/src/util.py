@@ -1,3 +1,5 @@
+import pyfiglet
+
 # Drive Computer
 # Utils
 #
@@ -7,14 +9,7 @@
 #   Joseph Telaak, class of 2022
 
 # ASCII Art Header for Console Output
-title = """
-   ________________ __  ___   ___         __        ______           __
-  / ____/ ___/ ___//  |/  /  /   | __  __/ /_____  / ____/___ ______/ /_
- / / __ \__ \\\__ \/ /|_/ /  / /| |/ / / / __/ __ \/ /   / __ `/ ___/ __/
-/ /_/ /___/ /__/ / /  / /  / ___ / /_/ / /_/ /_/ / /___/ /_/ / /  / /_
-\____//____/____/_/  /_/  /_/  |_\__,_/\__/\____/\____/\__,_/_/   \__/
-
-"""
+title = pyfiglet.figlet_format("GSSM AutoCart", font="slant")
 
 # Info Block Printed to Console on Init
 info_block = """
