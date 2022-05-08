@@ -2,7 +2,7 @@ import os
 import sys
 
 import src.util as util
-import src.can.can_messages as msg
+import src.can_messages as msg
 from src.can_adapter import CAN_Adapter
 
 # Hardware Module Tester
@@ -78,7 +78,8 @@ class Tester:
             1) Turn Right
             2) Turn Left
             3) Stop Turn
-            4) Back
+            4) Start Turn
+            5) Back
         
         """)
 
@@ -90,6 +91,8 @@ class Tester:
             self.can.write(msg.turn_left)
         elif option == 3:
             self.can.write(msg.stop_turn)
+        elif option == 4:
+            self.can.write(msg.en_turn)
         
         self.main_menu()
 
@@ -129,7 +132,8 @@ class Tester:
             1) Pull
             2) Release
             3) Disable
-            4) Back
+            4) Enable
+            5) Back
         
         """)
 
@@ -141,6 +145,8 @@ class Tester:
             self.can.write(msg.release_brakes)
         elif option == 3:
             self.can.write(msg.disable_brakes)
+        elif option == 4:
+            self.can.write(msg.enable_brakes)
         
         self.main_menu()
 
