@@ -1,5 +1,6 @@
 import serial
 import sys
+import src.util as util
 
 # Drive Computer Core Library
 #
@@ -24,7 +25,12 @@ class CAN_Adapter:
         #     print(f"FATAL: Cannot connect to the drive computer's CAN adapter ({serial_port}, {baud} baud)")
         #     quit()
 
-        self.arduino = serial.Serial(serial_port, baud, timeout=.1)
+        try:
+            self.arduino = serial.Serial(serial_port, baud, timeout=.1)
+        except:
+            print(util.to_color("FATAL: Cannot Connect", "red"))
+            sys.exit(0)
+
             
 
     # Return a reference to the device
@@ -64,12 +70,3 @@ class CAN_Adapter:
     # Send CAN message
     def write(self, message):
         self.arduino.write((f">{message}").encode())
-
-
-# List all available ports
-def printPorts():
-    import serial.tools.list_ports
-    ports = serial.tools.list_ports.comports()
-
-    for port, desc, hwid in sorted(ports):
-        print("{}: {} [{}]".format(port, desc, hwid))

@@ -29,11 +29,6 @@ if __name__ == "__main__":
         print(util.to_color("Please Specify the Serial Port of the CAN Adapter", "red"))
         print()
 
-        import src.can_adapter as adpt
-        print("Available Ports: ")
-        adpt.printPorts()
-        print()
-
         sys.exit(1)
 
     # Imports
