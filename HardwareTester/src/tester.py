@@ -48,7 +48,10 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             self.direction()
@@ -83,16 +86,23 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             self.can.write(msg.turn_right)
+            self.steering()
         elif option == 2:
             self.can.write(msg.turn_left)
+            self.steering()
         elif option == 3:
             self.can.write(msg.stop_turn)
+            self.steering()
         elif option == 4:
             self.can.write(msg.en_turn)
+            self.steering()
         
         self.main_menu()
 
@@ -110,16 +120,23 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             self.can.write(msg.forward)
+            self.direction()
         elif option == 2:
             self.can.write(msg.reverse)
+            self.direction()
         elif option == 3:
             self.can.write(msg.enable)
+            self.direction()
         elif option == 4:
             self.can.write(msg.disable)
+            self.direction()
         
         self.main_menu()
 
@@ -137,16 +154,23 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             self.can.write(msg.pull_brakes)
+            self.brakes()
         elif option == 2:
             self.can.write(msg.release_brakes)
+            self.brakes()
         elif option == 3:
             self.can.write(msg.disable_brakes)
+            self.brakes()
         elif option == 4:
             self.can.write(msg.enable_brakes)
+            self.brakes()
         
         self.main_menu()
 
@@ -163,14 +187,20 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             self.can.write(msg.accelerate)
+            self.acclerator()
         elif option == 2:
             self.can.write(msg.deccelerate)
+            self.acclerator()
         elif option == 3:
             self.can.write(msg.stop_accel)
+            self.acclerator()
         
         self.main_menu()
 
@@ -195,30 +225,44 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             self.can.write(msg.head_on)
+            self.accessories()
         elif option == 2:
             self.can.write(msg.head_off)
+            self.accessories()
         elif option == 3:
             self.can.write(msg.tail_on)
+            self.accessories()
         elif option == 4:
             self.can.write(msg.tail_off)
+            self.accessories()
         elif option == 5:
             self.can.write(msg.left_signal_on)
+            self.accessories()
         elif option == 6:
             self.can.write(msg.left_signal_off)
+            self.accessories()
         elif option == 7:
             self.can.write(msg.right_signal_on)
+            self.accessories()
         elif option == 8:
             self.can.write(msg.right_signal_off)
+            self.accessories()
         elif option == 9:
             self.can.write(msg.rear_buzz_on)
+            self.accessories()
         elif option == 10:
             self.can.write(msg.rear_buzz_off)
+            self.accessories()
         elif option == 11:
             self.can.write(msg.honk)
+            self.accessories()
         
         self.main_menu()
 
@@ -232,7 +276,10 @@ class Tester:
         
         """)
 
-        option = int(input("Enter Choice: "))
+        try:
+            option = int(input("Enter Choice: "))
+        except:
+            self.main_menu()
 
         if option == 1:
             pass
@@ -240,5 +287,5 @@ class Tester:
         self.main_menu()
 
     # Manual mode operation
-    def manual():
-        pass
+    def manual(self):
+        self.main_menu()
