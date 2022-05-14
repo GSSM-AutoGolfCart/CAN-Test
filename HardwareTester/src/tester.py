@@ -2,8 +2,9 @@ import os
 import sys
 
 import src.util as util
-import src.can_messages as msg
-from src.can_adapter import CAN_Adapter
+
+from src.ControlLib.ControlLib.src.can_adapter import CAN_Adapter
+import src.ControlLib.ControlLib.src.raw.can_messages as msg
 
 # Hardware Module Tester
 # Main
@@ -15,7 +16,7 @@ from src.can_adapter import CAN_Adapter
 class Tester:
 
     # Constructor
-    def __init__(self, adapter = CAN_Adapter()) -> None:
+    def __init__(self, adapter = CAN_Adapter(serial_port=sys.argv[1])) -> None:
         self.can = adapter
 
     # Run

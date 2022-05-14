@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     # Imports
     from src.tester import Tester
-    from src.can_adapter import CAN_Adapter
+    from src.ControlLib.ControlLib.src.can_adapter import CAN_Adapter
 
     # Run Program
     tester = Tester(adapter=CAN_Adapter(serial_port=str(sys.argv[1]), baud=115200))

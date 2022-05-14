@@ -1,0 +1,3 @@
+[submodule "HardwareTester/src/ControlLib"]
+	path = HardwareTester/src/ControlLib
+	url = https://github.com/GSSM-AutoGolfCart/ControlLib
