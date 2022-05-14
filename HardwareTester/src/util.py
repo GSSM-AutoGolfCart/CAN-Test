@@ -1,4 +1,5 @@
 import pyfiglet
+import os
 
 # Drive Computer
 # Utils
@@ -39,6 +40,15 @@ def to_color(string, color):
     }
 
     return colors[color] + str(string) + colors["reset"]
+
+# Clear screen
+def clear():
+    # Clear Screen
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    # Banner and Info Block
+    print(to_color(title, "cyan"))
+    print(info_block)
 
 if __name__ == "__main__":
     # Banner and Info Block

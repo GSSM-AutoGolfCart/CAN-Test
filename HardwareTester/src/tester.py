@@ -34,7 +34,7 @@ class Tester:
 
     # Main menu
     def main_menu(self):
-        self.clear()
+        util.clear()
         print("Main Menu: ")
 
         print("""
@@ -75,7 +75,7 @@ class Tester:
 
     # Steering menu
     def steering(self):
-        self.clear()
+        util.clear()
         print("Steering Menu: ")
 
         print("""
@@ -109,7 +109,7 @@ class Tester:
 
     # Direction Menu
     def direction(self):
-        self.clear()
+        util.clear()
         print("Direction Menu: ")
 
         print("""
@@ -143,7 +143,7 @@ class Tester:
 
     # Brakes menu
     def brakes(self):
-        self.clear()
+        util.clear()
         print("Brakes Menu: ")
 
         print("""
@@ -177,7 +177,7 @@ class Tester:
 
     # Accelerator menu
     def acclerator(self):
-        self.clear()
+        util.clear()
         print("Accelerator Menu: ")
 
         print("""
@@ -207,7 +207,7 @@ class Tester:
 
     # Accessory menu
     def accessories(self):
-        self.clear()
+        util.clear()
         print("Accessory Menu: ")
 
         print("""
@@ -269,7 +269,7 @@ class Tester:
 
     # Misc menu
     def misc(self):
-        self.clear()
+        util.clear()
         print("Misc Menu: ")
 
         print("""
