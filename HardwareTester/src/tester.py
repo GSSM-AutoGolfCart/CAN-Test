@@ -16,7 +16,7 @@ import src.ControlLib.ControlLib.src.raw.can_messages as msg
 class Tester:
 
     # Constructor
-    def __init__(self, adapter = CAN_Adapter(serial_port=sys.argv[1])) -> None:
+    def __init__(self, adapter: CAN_Adapter) -> None:
         self.can = adapter
 
     # Run
