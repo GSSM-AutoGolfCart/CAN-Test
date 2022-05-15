@@ -21,7 +21,11 @@ class Tester:
 
     # Run
     def run(self):
-        self.main_menu()
+        try:
+            self.main_menu()
+
+        except KeyboardInterrupt:
+            print("Exiting")
 
     # Clear screen
     def clear(self):
